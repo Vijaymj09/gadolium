@@ -1,9 +1,7 @@
 import "dotenv/config";
 import { serve } from "@hono/node-server";
-import { Hono } from "hono";
+import { allRoutes } from "./routes/routes";
 
-const hono = new Hono();
-
-serve(hono, (info) => {
+serve(allRoutes, (info) => {
   console.log(`Server is running @ http://localhost:${info.port}`);
 });
