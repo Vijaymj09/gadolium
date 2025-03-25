@@ -1,14 +1,10 @@
--- CreateTable
-CREATE TABLE "user" (
-    "id" TEXT NOT NULL,
-    "username" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
-    "name" TEXT,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "user_pkey" PRIMARY KEY ("id")
-);
+-- DropIndex
+DROP INDEX "User_email_key";
 
--- CreateIndex
-CREATE UNIQUE INDEX "user_username_key" ON "user"("username");
+-- AlterTable
+ALTER TABLE "User" DROP COLUMN "email",
+DROP COLUMN "passwordhash",
+ADD COLUMN     "name" TEXT,
+ADD COLUMN     "password" TEXT NOT NULL,
+ALTER COLUMN "username" SET NOT NULL;
